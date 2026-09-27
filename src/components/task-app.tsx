@@ -23,6 +23,7 @@ import { ConfirmDialog, Dialog, Kbd } from "./dialog";
 import { Illustration, ProgressRing, type IllustrationKind } from "./graphics";
 import { QuickAdd, type QuickAddValues } from "./quick-add";
 import { Sidebar } from "./sidebar";
+import { Splash } from "./splash";
 import { TaskDrawer } from "./task-drawer";
 import { TaskBoard } from "./task-board";
 import { TaskList, type TaskGroup } from "./task-list";
@@ -268,13 +269,23 @@ function TaskAppInner() {
     setTimeout(startTour, 250);
   };
 
-  // First visit: show the tour once the app has data to point at.
-  const loaded = data !== null;
+  // Keep the splash up for a beat so it reads as intentional rather than a flicker.
+  // Measured from navigation start, so a slow load never adds extra waiting.
+  const [splashDone, setSplashDone] = useState(false);
   useEffect(() => {
-    if (!loaded || hasSeenTour()) return;
-    const id = setTimeout(startTour, 900);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const wait = reduce ? 0 : Math.max(0, SPLASH_MIN_MS - performance.now());
+    const id = setTimeout(() => setSplashDone(true), wait);
     return () => clearTimeout(id);
-  }, [loaded]);
+  }, []);
+  const ready = data !== null && splashDone;
+
+  // First visit: show the tour once the splash is gone and the app is on screen.
+  useEffect(() => {
+    if (!ready || hasSeenTour()) return;
+    const id = setTimeout(startTour, 700);
+    return () => clearTimeout(id);
+  }, [ready]);
 
   // ---- keyboard ---------------------------------------------------------
 
@@ -370,12 +381,22 @@ function TaskAppInner() {
 
   // ---- render -----------------------------------------------------------
 
-  if (!data) return <LoadingShell />;
+  // The splash sits at the same position in both returns, so React keeps it mounted
+  // from the server-rendered HTML through hydration and its animation never restarts.
+  if (!data || !ready) {
+    return (
+      <>
+        {null}
+        <SplashLayer show />
+      </>
+    );
+  }
 
   const title = activeProject?.name ?? (effectiveProjectFilter === "none" ? "No project" : VIEW_META[view].label);
   const showGreeting = view === "all" && !activeProject && effectiveProjectFilter === "all";
 
   return (
+    <>
     <div className="flex h-full overflow-hidden">
       <Sidebar
         open={sidebarOpen}
@@ -631,7 +652,15 @@ function TaskAppInner() {
       {shortcutsOpen && <ShortcutsDialog key="shortcuts" onClose={() => setShortcutsOpen(false)} />}
       </AnimatePresence>
     </div>
+    <SplashLayer show={false} />
+    </>
   );
+}
+
+const SPLASH_MIN_MS = 1100;
+
+function SplashLayer({ show }: { show: boolean }) {
+  return <AnimatePresence>{show && <Splash key="splash" />}</AnimatePresence>;
 }
 
 const EMPTY_COPY: Record<ViewId, { art: IllustrationKind; title: string; hint: string }> = {
@@ -743,24 +772,5 @@ function ShortcutsDialog({ onClose }: { onClose: () => void }) {
         ))}
       </ul>
     </Dialog>
-  );
-}
-
-function LoadingShell() {
-  return (
-    <div className="flex h-full" aria-busy="true" aria-label="Loading">
-      <div className="hidden w-64 border-r border-line bg-subtle md:block" />
-      <div className="flex-1">
-        <div className="h-14 border-b border-line" />
-        <div className="mx-auto max-w-5xl space-y-4 px-8 pt-8">
-          <div className="h-7 w-48 animate-pulse rounded-lg bg-muted" />
-          <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-5">
-            {Array.from({ length: 5 }, (_, i) => (
-              <div key={i} className="h-[76px] animate-pulse rounded-xl bg-muted" />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
