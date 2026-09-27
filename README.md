@@ -64,22 +64,44 @@ Single user · Works offline in your browser · Light & dark · Keyboard first
     </td>
     <td valign="top">
       <h3>🧭 Understood in seconds</h3>
-      A short guided tour on first visit shows the core moves. Replay it any time from the sidebar.
+      An animated splash, then a short guided tour on first visit shows the core moves. Replay it any time from the sidebar.
     </td>
   </tr>
 </table>
 
-## 📸 Screenshots
+## 🌗 Light & dark
+
+Both themes are designed side by side, not bolted on. Tasks follows your system setting on first visit, switches with one click (☀️ / 🌙 in the top bar), remembers your choice, and never flashes the wrong theme on load.
 
 <table>
   <tr>
     <td width="50%">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/board-dark.png" />
-        <img src="docs/screenshots/board-light.png" alt="Board view with To do, In progress and Completed columns" />
-      </picture>
-      <p align="center"><sub><b>Board view</b>: drag between columns to change status</sub></p>
+      <img src="docs/screenshots/list-light.png" alt="List view in the light theme" />
+      <p align="center"><sub><b>Light</b></sub></p>
     </td>
+    <td width="50%">
+      <img src="docs/screenshots/list-dark.png" alt="List view in the dark theme" />
+      <p align="center"><sub><b>Dark</b></sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="docs/screenshots/board-light.png" alt="Board view in the light theme" />
+    </td>
+    <td width="50%">
+      <img src="docs/screenshots/board-dark.png" alt="Board view in the dark theme" />
+    </td>
+  </tr>
+</table>
+
+Every color is a design token (`--bg`, `--fg`, `--accent`, `--line`, …) defined once for each theme in [`globals.css`](src/app/globals.css), so the illustrations, charts, tour popovers and scrollbars all switch together.
+
+## 📸 Screenshots
+
+> The screenshots show the built-in sample data: an early brainstorm for **building a gym app**, spread across *Discovery*, *UX & Design* and *MVP Build*.
+
+<table>
+  <tr>
     <td width="50%">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/drawer-dark.png" />
@@ -87,19 +109,19 @@ Single user · Works offline in your browser · Light & dark · Keyboard first
       </picture>
       <p align="center"><sub><b>Task panel</b>: everything editable, saved as you type</sub></p>
     </td>
-  </tr>
-  <tr>
     <td width="50%">
       <img src="docs/screenshots/tour.png" alt="Guided tour popover pointing at the completion checkbox" />
       <p align="center"><sub><b>Guided tour</b>: shown once on first visit</sub></p>
     </td>
-    <td width="50%">
+  </tr>
+  <tr>
+    <td colspan="2">
       <p align="center">
-        <img src="docs/screenshots/mobile-light.png" alt="Mobile layout, light theme" width="45%" />
-        &nbsp;
-        <img src="docs/screenshots/mobile-dark.png" alt="Mobile layout, dark theme" width="45%" />
+        <img src="docs/screenshots/mobile-light.png" alt="Mobile layout, light theme" width="30%" />
+        &nbsp;&nbsp;
+        <img src="docs/screenshots/mobile-dark.png" alt="Mobile layout, dark theme" width="30%" />
       </p>
-      <p align="center"><sub><b>Mobile</b>: light and dark, equally polished</sub></p>
+      <p align="center"><sub><b>Mobile</b>: the sidebar becomes a slide-out menu and each task shows its details on a second line</sub></p>
     </td>
   </tr>
 </table>
@@ -117,7 +139,8 @@ Single user · Works offline in your browser · Light & dark · Keyboard first
 | **Filters & search** | Project, priority, status, assignee, tag. Search matches titles, descriptions, subtasks and tag names |
 | **Sort** | Due date · Priority · Created date · A to Z |
 | **Feedback** | Toasts for every action, illustrated empty states that say what to do next |
-| **Themes** | Light and dark. Follows your system until you choose |
+| **Themes** | Light and dark, equally polished. Follows your system until you choose, with no flash on load |
+| **Start-up** | Animated splash (logo, ring and check draw in) that plays from the first paint, then hands over to the app |
 | **Persistence** | Everything lives in `localStorage` and survives a refresh. No server, no sync |
 | **Seed data** | 3 projects, 6 tasks, 3 people and 4 tags on first run (a gym app brainstorm), dated relative to today |
 
@@ -142,7 +165,7 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:3000**. The app starts with sample data so it never opens empty.
+Open **http://localhost:3000**. The app starts with sample data (a gym app brainstorm) so it never opens empty.
 
 | Command | What it does |
 | --- | --- |
@@ -151,7 +174,7 @@ Open **http://localhost:3000**. The app starts with sample data so it never open
 | `npm start` | Serve the production build |
 | `npm run lint` | Run ESLint |
 
-> **Tip:** to start fresh, clear this site's data in your browser (DevTools → Application → Local storage).
+> **Tip:** sample data is only created when your browser has no saved data. To start fresh, or to see the latest sample data, clear this site's data (DevTools → Application → Local storage) and reload.
 
 ## 🏗️ How it's built
 
