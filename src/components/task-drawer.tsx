@@ -134,7 +134,6 @@ export function TaskDrawer({
             ref={titleRef}
             value={title}
             spellCheck={false}
-            spellCheck={false}
             rows={1}
             maxLength={200}
             onChange={(e) => {
