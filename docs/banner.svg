@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="t d">
+  <title id="t">Tasks</title>
+  <desc id="d">A fast, focused task manager: capture, organize, prioritize and complete.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#15161a"/>
+      <stop offset="0.55" stop-color="#1c1b2e"/>
+      <stop offset="1" stop-color="#2a2552"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.35" r="0.55">
+      <stop offset="0" stop-color="#8b7ff5" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8b7ff5" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity="0.07"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="340" rx="24" fill="url(#bg)"/>
+  <rect width="1280" height="340" rx="24" fill="url(#dots)"/>
+  <rect width="1280" height="340" rx="24" fill="url(#glow)"/>
+
+  <!-- Wordmark -->
+  <g transform="translate(88 96)">
+    <rect width="64" height="64" rx="18" fill="#8b7ff5"/>
+    <circle cx="32" cy="32" r="15" fill="none" stroke="#fff" stroke-width="4"/>
+    <path d="M25 32.5l5 5 9.5-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="88" y="48" class="sans" font-size="54" font-weight="700" fill="#ffffff" letter-spacing="-1.5">Tasks</text>
+  </g>
+  <text x="88" y="214" class="sans" font-size="23" fill="#c9c7d8">A fast, focused task manager for one person.</text>
+  <g class="sans" font-size="15" font-weight="600">
+    <g transform="translate(88 244)">
+      <rect width="96" height="34" rx="17" fill="#ffffff" fill-opacity="0.08"/>
+      <text x="48" y="22" text-anchor="middle" fill="#e8e7f2">Capture</text>
+    </g>
+    <text x="198" y="266" fill="#8b7ff5">→</text>
+    <g transform="translate(222 244)">
+      <rect width="104" height="34" rx="17" fill="#ffffff" fill-opacity="0.08"/>
+      <text x="52" y="22" text-anchor="middle" fill="#e8e7f2">Organize</text>
+    </g>
+    <text x="340" y="266" fill="#8b7ff5">→</text>
+    <g transform="translate(364 244)">
+      <rect width="104" height="34" rx="17" fill="#ffffff" fill-opacity="0.08"/>
+      <text x="52" y="22" text-anchor="middle" fill="#e8e7f2">Prioritize</text>
+    </g>
+    <text x="482" y="266" fill="#8b7ff5">→</text>
+    <g transform="translate(506 244)">
+      <rect width="108" height="34" rx="17" fill="#8b7ff5"/>
+      <text x="54" y="22" text-anchor="middle" fill="#ffffff">Complete</text>
+    </g>
+  </g>
+
+  <!-- Floating task card -->
+  <g transform="translate(790 58) rotate(-3)" filter="url(#shadow)">
+    <rect width="400" height="232" rx="18" fill="#1d1e23" stroke="#34363d"/>
+    <g transform="translate(22 22)">
+      <rect width="106" height="24" rx="6" fill="#3d6df2"/>
+      <text x="53" y="16.5" text-anchor="middle" class="sans" font-size="11" font-weight="700" fill="#fff" letter-spacing="0.5">IN PROGRESS</text>
+    </g>
+    <!-- row 1: completed -->
+    <g transform="translate(22 66)">
+      <circle cx="9" cy="9" r="9" fill="#3ec27a"/>
+      <path d="M5 9.2l2.6 2.6 5-5.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="30" y="14" class="sans" font-size="15" fill="#6f727b" text-decoration="line-through">Draft homepage wireframes</text>
+      <rect x="322" y="-1" width="34" height="20" rx="5" fill="#0ea5e9" fill-opacity="0.18"/>
+      <text x="339" y="13.5" text-anchor="middle" class="sans" font-size="10.5" font-weight="600" fill="#38bdf8">UI</text>
+    </g>
+    <line x1="22" y1="102" x2="378" y2="102" stroke="#2a2c31"/>
+    <!-- row 2: in progress, high -->
+    <g transform="translate(22 118)">
+      <circle cx="9" cy="9" r="8" fill="none" stroke="#6b8ff7" stroke-width="2"/>
+      <path d="M9 3.5a5.5 5.5 0 0 1 0 11z" fill="#6b8ff7"/>
+      <text x="30" y="14" class="sans" font-size="15" fill="#e8e9ec">Outline Q4 goals</text>
+      <path d="M262 2v15M262 3h10l-2.5 3.5L272 10h-10" fill="#f06a66" stroke="#f06a66" stroke-width="1.6" stroke-linejoin="round"/>
+      <circle cx="318" cy="9" r="11" fill="#6c5ce7" stroke="#1d1e23" stroke-width="2.5"/>
+      <text x="318" y="13" text-anchor="middle" class="sans" font-size="9" font-weight="700" fill="#fff">M</text>
+      <circle cx="336" cy="9" r="11" fill="#f97316" stroke="#1d1e23" stroke-width="2.5"/>
+      <text x="336" y="13" text-anchor="middle" class="sans" font-size="9" font-weight="700" fill="#fff">SR</text>
+    </g>
+    <line x1="22" y1="154" x2="378" y2="154" stroke="#2a2c31"/>
+    <!-- row 3: overdue -->
+    <g transform="translate(22 170)">
+      <rect x="-12" y="-4" width="3" height="26" rx="1.5" fill="#f06a66"/>
+      <circle cx="9" cy="9" r="8" fill="none" stroke="#8d919b" stroke-width="2"/>
+      <text x="30" y="14" class="sans" font-size="15" fill="#e8e9ec">Book dentist appointment</text>
+      <text x="356" y="14" text-anchor="end" class="sans" font-size="13" font-weight="600" fill="#f06a66">Overdue</text>
+    </g>
+    <!-- progress -->
+    <rect x="22" y="208" width="356" height="5" rx="2.5" fill="#2a2c31"/>
+    <rect x="22" y="208" width="214" height="5" rx="2.5" fill="#3ec27a"/>
+  </g>
+
+  <!-- Sparkles -->
+  <path d="M1216 44l3.2 9.8L1229 57l-9.8 3.2L1216 70l-3.2-9.8L1203 57l9.8-3.2z" fill="#8b7ff5"/>
+  <path d="M760 280l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#b3aaff" fill-opacity="0.8"/>
+</svg>

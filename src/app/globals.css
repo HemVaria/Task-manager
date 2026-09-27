@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #ffffff;
+  --subtle: #f8f8fa;
+  --muted: #f1f1f4;
+  --hover: #f4f4f7;
+  --line: #ebebef;
+  --line-strong: #dddde3;
+  --fg: #1c1d21;
+  --fg-muted: #5f626b;
+  --fg-faint: #9a9da6;
+
+  --accent: #6c5ce7;
+  --accent-hover: #5b4bd5;
+  --accent-soft: #efedfd;
+  --accent-fg: #ffffff;
+
+  --danger: #d9423f;
+  --danger-soft: #fdefee;
+  --warning: #e0930b;
+  --success: #1f9d55;
+
+  --todo: #8a8e98;
+  --progress: #3d6df2;
+  --done: #1f9d55;
+
+  --shadow-sm: 0 1px 2px rgb(16 17 20 / 0.05);
+  --shadow-lg: 0 16px 40px rgb(16 17 20 / 0.14), 0 2px 8px rgb(16 17 20 / 0.06);
+  --backdrop: rgb(16 17 20 / 0.28);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #16171a;
+  --subtle: #1b1c20;
+  --muted: #24262b;
+  --hover: #222428;
+  --line: #2a2c31;
+  --line-strong: #373a40;
+  --fg: #e8e9ec;
+  --fg-muted: #a2a5ad;
+  --fg-faint: #6f727b;
+
+  --accent: #8b7ff5;
+  --accent-hover: #9d93f7;
+  --accent-soft: #2a2745;
+  --accent-fg: #ffffff;
+
+  --danger: #f06a66;
+  --danger-soft: #3a2224;
+  --warning: #f0ad3c;
+  --success: #3ec27a;
+
+  --todo: #8d919b;
+  --progress: #6b8ff7;
+  --done: #3ec27a;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 16px 40px rgb(0 0 0 / 0.5), 0 2px 8px rgb(0 0 0 / 0.3);
+  --backdrop: rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-subtle: var(--subtle);
+  --color-muted: var(--muted);
+  --color-hover: var(--hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --shadow-soft: var(--shadow-sm);
+  --shadow-float: var(--shadow-lg);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Keep the native date picker icon legible in dark mode. */
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    transform: translateY(6px) scale(0.98);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animate-pop-in {
+  animation: pop-in 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animate-fade-in {
+  animation: fade-in 160ms ease-out;
+}
+
+/* ---- Product tour (driver.js) ------------------------------------------- */
+
+.driver-popover.tm-tour {
+  font-family: var(--font-sans);
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 18px 18px 14px;
+  min-width: 280px;
+  max-width: 340px;
+}
+
+.tm-tour .driver-popover-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  padding-right: 20px;
+}
+
+.tm-tour .driver-popover-description {
+  margin-top: 6px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
+
+.tm-tour .driver-popover-description kbd {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 5px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--subtle);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg);
+}
+
+.tm-tour .driver-popover-close-btn {
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  color: var(--fg-faint);
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.tm-tour .driver-popover-close-btn:hover,
+.tm-tour .driver-popover-close-btn:focus-visible {
+  background: var(--hover);
+  color: var(--fg);
+}
+
+.tm-tour .driver-popover-footer {
+  margin-top: 16px;
+}
+
+.tm-tour .driver-popover-progress-text {
+  font-size: 12px;
+  color: var(--fg-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.tm-tour .driver-popover-footer-btn {
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 28px;
+  text-shadow: none;
+  transition: background-color 120ms, border-color 120ms, transform 120ms;
+}
+
+.tm-tour .driver-popover-footer-btn:hover {
+  background: var(--hover);
+}
+
+.tm-tour .driver-popover-footer-btn:active {
+  transform: scale(0.97);
+}
+
+.tm-tour .driver-popover-footer-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tm-tour .driver-popover-next-btn {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.tm-tour .driver-popover-next-btn:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+}
+
+.tm-tour .driver-popover-navigation-btns button + button {
+  margin-left: 6px;
+}
+
+.tm-tour .driver-popover-arrow {
+  border-width: 7px;
+  border-color: var(--bg);
+}
+
+.tm-tour .driver-popover-arrow-side-left {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.tm-tour .driver-popover-arrow-side-right {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+.tm-tour .driver-popover-arrow-side-top {
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.tm-tour .driver-popover-arrow-side-bottom {
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.tm-tour .driver-popover-arrow-none {
+  display: none;
+}
+
+.driver-fade .driver-popover.tm-tour {
+  animation: pop-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
