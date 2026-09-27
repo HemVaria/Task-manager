@@ -35,7 +35,6 @@ export function defaultTags() {
   return [
     { id: createId(), name: "design", color: TAG_COLORS[0] },
     { id: createId(), name: "research", color: TAG_COLORS[1] },
-    { id: createId(), name: "errand", color: TAG_COLORS[3] },
     { id: createId(), name: "urgent", color: TAG_COLORS[7] },
   ];
 }
@@ -53,7 +52,7 @@ export function createSeedData(): AppData {
   const people = defaultPeople();
   const [me, alex, sam] = people;
   const tags = defaultTags();
-  const [design, research, errand, urgent] = tags;
+  const [design, research, urgent] = tags;
 
   const sub = (title: string, done = false) => ({ id: createId(), title, done });
 
@@ -97,7 +96,7 @@ export function createSeedData(): AppData {
         status: "todo",
         projectId: personal.id,
         assigneeIds: [me.id],
-        tagIds: [errand.id],
+        tagIds: [],
         subtasks: [],
         createdAt: hoursAgo(120),
       },
@@ -110,7 +109,7 @@ export function createSeedData(): AppData {
         status: "completed",
         projectId: personal.id,
         assigneeIds: [me.id],
-        tagIds: [errand.id],
+        tagIds: [],
         subtasks: [],
         createdAt: hoursAgo(168),
       },
