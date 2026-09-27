@@ -10,6 +10,11 @@ Single user · Works offline in your browser · Light & dark · Keyboard first
 
 <br />
 
+<a href="https://taskmanager-by-hehehem.vercel.app/"><img src="https://img.shields.io/badge/▶_Live_demo-taskmanager--by--hehehem.vercel.app-6c5ce7?style=for-the-badge" alt="Live demo" /></a>
+
+<br />
+<br />
+
 ![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-20232a?style=flat-square&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -189,6 +194,8 @@ src/
 - Animations respect the system *reduce motion* setting
 
 ## ☁️ Deploy
+
+**Live:** https://taskmanager-by-hehehem.vercel.app/
 
 Import the repository on [Vercel](https://vercel.com/new), keep the detected Next.js settings and click **Deploy**. Every push to `main` redeploys, and every pull request gets a preview URL.
 
