@@ -119,7 +119,7 @@ Single user · Works offline in your browser · Light & dark · Keyboard first
 | **Feedback** | Toasts for every action, illustrated empty states that say what to do next |
 | **Themes** | Light and dark. Follows your system until you choose |
 | **Persistence** | Everything lives in `localStorage` and survives a refresh. No server, no sync |
-| **Seed data** | 3 projects, 6 tasks, 3 people and 3 tags on first run, dated relative to today |
+| **Seed data** | 3 projects, 6 tasks, 3 people and 4 tags on first run (a gym app brainstorm), dated relative to today |
 
 ## ⌨️ Keyboard shortcuts
 
